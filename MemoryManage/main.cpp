@@ -1,0 +1,62 @@
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+struct Node {
+	int data;
+	Node* prev, * next;
+	Node(int data) : data(data), prev(nullptr), next(nullptr) {}
+};
+
+void System_Start() {
+	cout << "----------------------------------\n";
+	cout << "----------------------------------\n";
+	cout << "메모리 관리 프로그램을 시작합니다.\n";
+	cout << "Ver0.0.1\n";
+	cout << "----------------------------------\n";
+	cout << "----------------------------------\n";
+	cout << "\n\n\n";
+}
+
+int System_input() {
+	int num;
+	cin >> num;
+
+	cout << "명령어를 입력해주세요.\n";
+	//해당 프로젝트에서는 랜덤 값으로 메모리가 할당됨.
+	cout << "1. 프로그램 입력.\n";
+	cout << "2. 프로그램 삭제.\n";
+	cout << "3. 가장 점유율이 높은 프로그램 정렬.\n";
+}
+
+void System_DeadLock() {
+	cout << "데드락 발생!! 최적의 솔루션으로 데드락을 벗어납니다!";
+
+
+}
+
+void System_Alert() {
+	cout << "[경고] 외부 패킷의 접근 시도.\n";
+	cout << "\a";
+	cout << "[경고] 외부 패킷의 접근 시도.\n";
+	cout << "\a";
+	cout << "[경고] 외부 패킷의 접근 시도.\n";
+	cout << "\a";
+
+	cout << "해당 외부 패킷이 가고자 하는 곳을 탐색합니다.\n";
+
+
+}
+
+int main() {
+	System_Start();
+
+	int ord = System_input();
+
+	//시스템 데드락.
+	System_DeadLock();
+	//시스템 외부 해킹 경고.
+	System_Alert();
+
+}
