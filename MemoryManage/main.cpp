@@ -1,5 +1,7 @@
 #include <iostream>
 #include <algorithm>
+#include <thread>
+#include <chrono>
 
 using namespace std;
 
@@ -17,17 +19,23 @@ void System_Start() {
 	cout << "----------------------------------\n";
 	cout << "----------------------------------\n";
 	cout << "\n\n\n";
+
+	this_thread::sleep_for(chrono::seconds(5));
+
 }
 
 int System_input() {
 	int num;
-	cin >> num;
-
+	
 	cout << "명령어를 입력해주세요.\n";
 	//해당 프로젝트에서는 랜덤 값으로 메모리가 할당됨.
 	cout << "1. 프로그램 입력.\n";
 	cout << "2. 프로그램 삭제.\n";
 	cout << "3. 가장 점유율이 높은 프로그램 정렬.\n";
+	cin >> num;
+
+
+	return num;
 }
 
 void System_DeadLock() {
