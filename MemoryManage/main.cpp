@@ -34,7 +34,6 @@ int System_input() {
 	cout << "3. 가장 점유율이 높은 프로그램 정렬.\n";
 	cin >> num;
 
-
 	return num;
 }
 
