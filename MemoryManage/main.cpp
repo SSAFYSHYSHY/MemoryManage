@@ -3,6 +3,8 @@
 #include <thread>
 #include <chrono>
 
+#include "Linked_list.h"
+
 using namespace std;
 
 struct Node {
@@ -21,7 +23,6 @@ void System_Start() {
 	cout << "\n\n\n";
 
 	this_thread::sleep_for(chrono::seconds(5));
-
 }
 
 int System_input() {
@@ -43,6 +44,10 @@ void System_DeadLock() {
 
 }
 
+pair<int, string > System_Find_Hack() {
+
+}
+
 void System_Alert() {
 	cout << "[경고] 외부 패킷의 접근 시도.\n";
 	cout << "\a";
@@ -52,7 +57,9 @@ void System_Alert() {
 	cout << "\a";
 
 	cout << "해당 외부 패킷이 가고자 하는 곳을 탐색합니다.\n";
-
+	//접근되고 있는 프로그램 탐색.
+	pair<int, string> look = System_Find_Hack();
+	cout << "색출 성공! 해당 프로그램의 인덱스와 이름값을 호출합니다.\n";
 
 }
 
