@@ -7,17 +7,11 @@
 
 using namespace std;
 
-struct Node {
-	int data;
-	Node* prev, * next;
-	Node(int data) : data(data), prev(nullptr), next(nullptr) {}
-};
-
 void System_Start() {
 	cout << "----------------------------------\n";
 	cout << "----------------------------------\n";
 	cout << "메모리 관리 프로그램을 시작합니다.\n";
-	cout << "Ver0.0.1\n";
+	cout << "Ver0.0.5\n";
 	cout << "----------------------------------\n";
 	cout << "----------------------------------\n";
 	cout << "\n\n\n";
@@ -30,9 +24,13 @@ int System_input() {
 	
 	cout << "명령어를 입력해주세요.\n";
 	//해당 프로젝트에서는 랜덤 값으로 메모리가 할당됨.
-	cout << "1. 프로그램 입력.(테스트 이므로 입력시 랜덤 메모리 양이 할당 됩니다.)\n";
+	cout << "1. 프로그램 입력.(테스트 이므로 입력시 랜덤 메모리 양이 할당 됩니다. 메모리는 총 1024)\n";
 	cout << "2. 프로그램 삭제.\n";
 	cout << "3. 가장 점유율이 높은 프로그램 정렬.\n";
+	cout << "4. 메모리 상태 보기.\n";
+	cout << "5. 스케줄링 정책 변경.\n";
+	cout << "6. 시스템 로그 확인.\n";
+	cout << "7. 전체 초기화.\n";
 	cin >> num;
 
 	return num;
@@ -45,7 +43,7 @@ void System_DeadLock() {
 }
 
 pair<int, string > System_Find_Hack() {
-
+	return make_pair(0,"null");
 }
 
 void System_Alert() {
@@ -67,6 +65,12 @@ int main() {
 	System_Start();
 
 	int ord = System_input();
+
+	//프로그램 입력.
+	if (ord == 1) {
+
+	}
+	//
 
 	//시스템 데드락.
 	System_DeadLock();

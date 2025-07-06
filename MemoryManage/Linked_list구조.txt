@@ -1,3 +1,6 @@
+ver0.0.5 : 핵심 함수들과 기능들에 대한 것들은 간단히 작성.
+
+
 #include <iostream>
 #include <string>
 #include <unordered_map>
