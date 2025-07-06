@@ -3,6 +3,8 @@
 #include <thread>
 #include <chrono>
 
+#include <ctime>
+
 #include "Linked_list.h"
 
 using namespace std;
@@ -63,12 +65,24 @@ void System_Alert() {
 
 int main() {
 	System_Start();
+	srand(time(NULL));
 
+	//초기 노드 설정.(첫 실행시.)
+	nodes[0] = new Node(-1);
+	
 	int ord = System_input();
 
 	//프로그램 입력.
 	if (ord == 1) {
+		//프로그램 이름.
+		string s;
+		cin >> s;
 
+		//랜덤한 메모리.
+		int new_data = rand() % 100 + 1;
+		Node* memory = new Node(new_data);
+
+		Insert_Front(nodes[0], memory);
 	}
 	//
 
