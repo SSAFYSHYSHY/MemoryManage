@@ -1,4 +1,6 @@
 #pragma once
+
+//링크드 리스트 인터페이스 정의.
 #include <unordered_map>
 #include <string>
 

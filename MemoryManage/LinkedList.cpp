@@ -1,3 +1,5 @@
+
+//링크드 리스트 기능 구현.
 #include "Linked_list.h"
 
 LinkedList::LinkedList() : head(nullptr), tail(nullptr) {}
