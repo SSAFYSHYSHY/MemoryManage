@@ -64,31 +64,31 @@ void System_Alert() {
 }
 
 int main() {
+	LinkedList memoryList;
+
 	System_Start();
 	srand(time(NULL));
-
-	//초기 노드 설정.(첫 실행시.)
-	nodes[0] = new Node(-1);
 	
-	int ord = System_input();
+	while (1) {
+		int ord = System_input();
 
-	//프로그램 입력.
-	if (ord == 1) {
-		//프로그램 이름.
-		string s;
-		cin >> s;
+		//프로그램 입력.
+		if (ord == 1) {
+			//프로그램 이름.
+			string s;
+			cin >> s;
 
-		//랜덤한 메모리.
-		int new_data = rand() % 100 + 1;
-		Node* memory = new Node(new_data);
+			//랜덤한 메모리.
+			int new_data = rand() % 100 + 1;
+			memoryList.Insert(s, new_data);
 
-		Insert_Front(nodes[0], memory);
+			cout << "프로그램 " << s << " 가 " << new_data << " (MB)만큼 추가됨.\n";
+		}
+		//
+
+		//시스템 데드락.
+		System_DeadLock();
+		//시스템 외부 해킹 경고.
+		System_Alert();
 	}
-	//
-
-	//시스템 데드락.
-	System_DeadLock();
-	//시스템 외부 해킹 경고.
-	System_Alert();
-
 }
