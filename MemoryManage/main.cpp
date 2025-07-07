@@ -2,7 +2,6 @@
 #include <algorithm>
 #include <thread>
 #include <chrono>
-
 #include <ctime>
 
 #include "Linked_list.h"
@@ -29,11 +28,12 @@ int System_input() {
 	cout << "1. 프로그램 입력.(테스트 이므로 입력시 랜덤 메모리 양이 할당 됩니다. 메모리는 총 1024)\n";
 	cout << "2. 프로그램 삭제.\n";
 	cout << "3. 가장 점유율이 높은 프로그램 정렬.\n";
-	cout << "4. 메모리 상태 보기.\n";
-	cout << "5. 스케줄링 정책 변경.\n";
-	cout << "6. 시스템 로그 확인.\n";
-	cout << "7. 전체 초기화.\n";
-	cout << "8. 종료.\n";
+	cout << "4. 가장 점유율이 낮은 프로그램 정렬.\n";
+	cout << "5. 메모리 상태 보기.\n";
+	cout << "6. 스케줄링 정책 변경.\n";
+	cout << "7. 시스템 로그 확인.\n";
+	cout << "8. 전체 초기화.\n";
+	cout << "9. 종료.\n";
 	cin >> num;
 
 	return num;
@@ -73,7 +73,7 @@ int main() {
 	while (1) {
 		int ord = System_input();
 
-		if (ord == 8) {
+		if (ord == 9) {
 			break;
 		}
 
@@ -94,9 +94,13 @@ int main() {
 			string s;
 			cin >> s;
 
-			memoryList.Delete(s);
+			if (memoryList.Delete(s)) {
+				cout << "프로그램 " << s << " 가 " << "삭제됨.\n";
+			}
+			else {
+				cout << "프로그램 " << s << " 가 없습니다.\n";
+			}
 
-			cout << "프로그램 " << s << " 가 " << "삭제됨.\n";
 		}
 
 		//시스템 데드락.

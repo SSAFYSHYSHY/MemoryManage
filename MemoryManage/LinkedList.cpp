@@ -24,14 +24,30 @@ void LinkedList::Insert(std::string name, int data) {
 	}
 }
 
-void LinkedList::Delete(std::string name, int data) {
-	
-	if (u->prev != nullptr) {
-		u->prev->next = u->next;
-	}
-	if (u->next != nullptr) {
-		u->next->prev = u->prev;
+bool LinkedList::Delete(std::string name) {
+	Node* curr = head;
+
+	while (curr != nullptr) {
+		//해당 이름 발견시.
+		if (curr->name == name) {
+			//연결 끊기..
+			if (curr->prev) {
+				curr->prev->next = curr->next;
+			}
+			else {
+				//삭제할 노드가 head
+				head = curr->next;
+			}
+
+			if (curr->next) {
+				curr->next->prev = curr->prev;
+			}
+
+			delete curr;
+			return true;
+		}
+		curr = curr->next;
 	}
 
-	delete u;
+	return false;
 }
