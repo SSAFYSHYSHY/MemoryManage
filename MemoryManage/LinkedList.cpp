@@ -51,3 +51,13 @@ bool LinkedList::Delete(std::string name) {
 
 	return false;
 }
+
+void LinkedList::Upper() {
+
+
+}
+
+void LinkedList::Down() {
+
+
+}

@@ -22,4 +22,6 @@ public:
 
 	void Insert(std::string name, int data);
 	bool Delete(std::string name);
+	void Upper();
+	void Down();
 };
