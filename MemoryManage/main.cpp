@@ -21,10 +21,10 @@ void System_Start() {
 }
 
 int System_input() {
+
 	int num;
 	
 	cout << "명령어를 입력해주세요.\n";
-	//해당 프로젝트에서는 랜덤 값으로 메모리가 할당됨.
 	cout << "1. 프로그램 입력.(테스트 이므로 입력시 랜덤 메모리 양이 할당 됩니다. 메모리는 총 1024)\n";
 	cout << "2. 프로그램 삭제.\n";
 	cout << "3. 가장 점유율이 높은 프로그램 정렬.\n";
@@ -34,6 +34,7 @@ int System_input() {
 	cout << "7. 시스템 로그 확인.\n";
 	cout << "8. 전체 초기화.\n";
 	cout << "9. 종료.\n";
+	cout << "\n\n";
 	cin >> num;
 
 	return num;
@@ -71,6 +72,7 @@ int main() {
 	srand(time(NULL));
 	
 	while (1) {
+		cout << "\n\n";
 		int ord = System_input();
 
 		if (ord == 9) {
@@ -79,6 +81,8 @@ int main() {
 
 		//1. 프로그램 입력.
 		if (ord == 1) {
+			cout << "입력하고자 하는 프로그램의 이름을 입력해주십시오.\n";
+
 			//프로그램 이름.
 			string s;
 			cin >> s;
@@ -91,6 +95,8 @@ int main() {
 		}
 		//2. 프로그램 삭제.
 		else if (ord == 2) {
+			cout << "삭제하고자 하는 프로그램의 이름을 입력해주십시오.\n";
+
 			string s;
 			cin >> s;
 
@@ -102,10 +108,10 @@ int main() {
 			}
 
 		}
-
-		//시스템 데드락.
-		System_DeadLock();
-		//시스템 외부 해킹 경고.
-		System_Alert();
 	}
+
+	//시스템 데드락.
+	System_DeadLock();
+	//시스템 외부 해킹 경고.
+	System_Alert();
 }
