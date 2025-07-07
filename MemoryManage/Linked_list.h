@@ -21,4 +21,5 @@ public:
 	~LinkedList();
 
 	void Insert(std::string name, int data);
+	void Delete(std::string name, int data);
 };

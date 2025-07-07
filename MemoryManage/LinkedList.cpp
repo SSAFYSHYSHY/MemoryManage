@@ -23,3 +23,15 @@ void LinkedList::Insert(std::string name, int data) {
 		tail = newNode;
 	}
 }
+
+void LinkedList::Delete(std::string name, int data) {
+	
+	if (u->prev != nullptr) {
+		u->prev->next = u->next;
+	}
+	if (u->next != nullptr) {
+		u->next->prev = u->prev;
+	}
+
+	delete u;
+}
