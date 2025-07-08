@@ -1,6 +1,8 @@
 
 //링크드 리스트 기능 구현.
 #include "Linked_list.h"
+#include <algorithm>
+#include <iostream>
 
 LinkedList::LinkedList() : head(nullptr), tail(nullptr) {}
 LinkedList::~LinkedList() {
@@ -53,11 +55,61 @@ bool LinkedList::Delete(std::string name) {
 }
 
 void LinkedList::Upper() {
+	Node* curr = head;
 
+	if (!head) return;
+
+	bool flag = true;
+	do {
+		flag = false;
+		Node* curr = head;
+
+		while (curr->next != nullptr) {
+			if (curr->data > curr->next->data) {
+				std::swap(curr->data, curr->next->data);
+				std::swap(curr->name, curr->next->name);
+				flag = true;
+			}
+			curr = curr->next;
+		}
+
+	} while (flag);
+
+	int cnt = 1;
+	while (curr != nullptr) {
+
+		std::cout << cnt << " : 프로그램 이름 : " << curr->name << " -> 차지하고 있는 메모리 " << curr->data << "\n";
+		curr = curr->next;
+		cnt++;
+	}
 
 }
 
 void LinkedList::Down() {
+	Node* curr = head;
 
+	if (!head) return;
+
+	bool flag = true;
+	do {
+		flag = false;
+		Node *curr = head;
+
+		while (curr->data < curr->next->data) {
+			std::swap(curr->data, curr->next->data);
+			std::swap(curr->name, curr->next->name);
+			flag = true;
+		}
+		curr = curr->next;
+
+	} while (flag);
+
+	int cnt = 1;
+	while (curr != nullptr) {
+
+		std::cout << cnt << " : 프로그램 이름 : " << curr->name << " -> 차지하고 있는 메모리 " << curr->data << "\n";
+		curr = curr->next;
+		cnt++;
+	}
 
 }

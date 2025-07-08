@@ -83,11 +83,9 @@ int main() {
 		if (ord == 1) {
 			cout << "입력하고자 하는 프로그램의 이름을 입력해주십시오.\n";
 
-			//프로그램 이름.
 			string s;
 			cin >> s;
 
-			//랜덤한 메모리.
 			int new_data = rand() % 100 + 1;
 			memoryList.Insert(s, new_data);
 
