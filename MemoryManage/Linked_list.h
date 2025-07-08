@@ -24,4 +24,5 @@ public:
 	bool Delete(std::string name);
 	void Upper();
 	void Down();
+	void Print();
 };

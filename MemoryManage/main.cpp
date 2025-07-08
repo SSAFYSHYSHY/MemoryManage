@@ -119,6 +119,12 @@ int main() {
 
 			memoryList.Down();
 		}
+
+		else if (ord == 5) {
+			cout << "메모리 상태를 출력합니다.\n\n";
+
+			memoryList.Print();
+		}
 	}
 
 	//시스템 데드락.

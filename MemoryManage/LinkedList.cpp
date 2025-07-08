@@ -113,3 +113,18 @@ void LinkedList::Down() {
 	}
 
 }
+
+void LinkedList::Print() {
+	Node* curr = head;
+
+	int cnt = 1;
+	double mem = 1024;
+	std::cout.precision(2);
+
+	while (curr != nullptr) {
+		std::cout << cnt << " : 프로그램 이름 : " << curr->name << " -> 차지하고 있는 메모리 " << curr->data << " -> 메모리 점유율 " << (double)((curr->data) / mem) << "%\n";
+		cnt++;
+		curr = curr->next;
+	}
+
+}
