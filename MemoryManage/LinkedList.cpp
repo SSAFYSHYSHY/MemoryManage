@@ -128,7 +128,35 @@ void LinkedList::Print() {
 	}
 
 }
-
+// 1.Round Robin, 2.SRT 스케줄링, 3.MFQ 스케줄링 4.FIFO, 5.우선순위, 6.SJF, 7.HRN";
 void LinkedList::Scheduling(int num) {
+	//Round Robin
+	if (num == 1) {
+
+	}
+	//SRT 
+	else if (num == 2) {
+
+	}
+	//MFQ
+	else if (num == 3) {
+
+	}
+	//FIFO
+	else if (num == 4) {
+
+	}
+	//우선순위
+	else if (num == 5) {
+
+	}
+	//SJF
+	else if (num == 6) {
+
+	}
+	//HRN
+	else if (num == 7) {
+
+	}
 
 }
