@@ -25,4 +25,5 @@ public:
 	void Upper();
 	void Down();
 	void Print();
+	void Scheduling(int num);
 };

@@ -31,6 +31,7 @@ int System_input() {
 	cout << "4. 가장 점유율이 낮은 프로그램 정렬.\n";
 	cout << "5. 메모리 상태 보기.\n";
 	cout << "6. 스케줄링 정책 변경.\n";
+	cout << "7. 스케줄링에 따른 메모리 동작 시뮬.\n";
 	cout << "7. 시스템 로그 확인.\n";
 	cout << "8. 전체 초기화.\n";
 	cout << "9. 종료.\n";
@@ -125,6 +126,23 @@ int main() {
 			cout << "메모리 상태를 출력합니다.\n\n";
 
 			memoryList.Print();
+		}
+
+		//6. 스케쥴링 정책 변경.
+		else if (ord == 6) {
+			cout << "스케줄링 정책을 변경합니다.\n\n";
+			cout << "선점형 정책은 다음과 같습니다.\n";
+			cout << "1.Round Robin, 2.SRT 스케줄링, 3.MFQ 스케줄링\n\n";
+			cout << "비선점형 정책은 다음과 같습니다.\n";
+			cout << "4.FIFO, 5.우선순위, 6.SJF, 7.HRN\n\n";
+
+			cout << "변경하고자 하는 스케줄링을 입력해주세요.\n\n";
+			int num;
+			cin >> num;
+
+			memoryList.Scheduling(num);
+
+			cout << num << " 의 스케줄링으로 정책을 변경했습니다!\n\n";
 		}
 	}
 

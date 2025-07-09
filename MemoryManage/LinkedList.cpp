@@ -128,3 +128,7 @@ void LinkedList::Print() {
 	}
 
 }
+
+void LinkedList::Scheduling(int num) {
+
+}
