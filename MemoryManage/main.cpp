@@ -120,6 +120,7 @@ int main() {
 			memoryList.Down();
 		}
 
+		//5. 메모리 상태 출력.
 		else if (ord == 5) {
 			cout << "메모리 상태를 출력합니다.\n\n";
 
