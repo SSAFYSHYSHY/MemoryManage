@@ -148,6 +148,11 @@ void LinkedList::Scheduling(int num) {
 	}
 	//SRT 
 	else if (num == 2) {
+		std::cout << "SRT 형식으로 진행합니다.\n" << "가장 짧은 메모리를 가진 프로그램이 우선적으로 보여집니다.\n";
+	
+		while (curr != nullptr) {
+
+		}
 
 	}
 	//MFQ
