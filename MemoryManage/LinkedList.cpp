@@ -183,6 +183,11 @@ void LinkedList::Scheduling(int num) {
 	}
 	//SJF
 	else if (num == 6) {
+		std::cout << "SJF 형식으로 진행됩니다.\n" << "가장 짧은 작업량을 가진 프로그램이 먼저 실행됩니다.\n";
+
+		while (curr != nullptr) {
+
+		}
 
 	}
 	//HRN
