@@ -174,6 +174,11 @@ void LinkedList::Scheduling(int num) {
 	}
 	//우선순위
 	else if (num == 5) {
+		std::cout << "우선순위 형식으로 진행됩니다.\n" << "현재 실행중인 프로그램(헤더)와 비교해서 다음 우선순위(메모리)가 높은 프로그램이 작동됩니다..\n";
+
+		while (curr != nullptr) {
+
+		}
 
 	}
 	//SJF
