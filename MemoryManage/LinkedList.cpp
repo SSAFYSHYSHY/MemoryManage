@@ -192,6 +192,11 @@ void LinkedList::Scheduling(int num) {
 	}
 	//HRN
 	else if (num == 7) {
+		std::cout << "SJF 형식으로 진행됩니다.\n" << "프로그램 응답순위가 커질 수록 우선순위 실행 속도가 높아집니다.\n";
+
+		while (curr != nullptr) {
+
+		}
 
 	}
 
