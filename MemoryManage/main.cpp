@@ -143,6 +143,25 @@ int main() {
 
 			cout << num << " 의 스케줄링으로 정책을 변경했습니다!\n\n";
 		}
+
+		//7. 시스템 로그 확인.
+		else if (ord == 7) {
+			cout << "지금까지 수행한 모든 명령어를 출력합니다.\n\n";
+
+			memoryList.LOG();
+		}
+
+		//8. 전체 초기화.
+		else if (ord == 8) {
+			cout << "전체 초기화를 수행합니다.\n\n";
+
+			memoryList.Clear();
+		}
+
+		else if (ord == 9) {
+			cout << "시스템을 종료합니다.\n\n";
+			break;
+		}
 	}
 
 	//시스템 데드락.

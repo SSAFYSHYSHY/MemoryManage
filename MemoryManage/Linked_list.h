@@ -26,4 +26,6 @@ public:
 	void Down();
 	void Print();
 	void Scheduling(int num);
+	void LOG();
+	void Clear();
 };

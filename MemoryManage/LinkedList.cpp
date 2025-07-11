@@ -202,3 +202,11 @@ void LinkedList::Scheduling(int num) {
 	}
 
 }
+
+void LinkedList::LOG() {
+
+}
+
+void LinkedList::Clear() {
+
+}
