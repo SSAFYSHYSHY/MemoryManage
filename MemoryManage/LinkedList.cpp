@@ -214,5 +214,11 @@ void LinkedList::LOG() {
 }
 
 void LinkedList::Clear() {
+	Node* curr = head;
+
+	while (curr != nullptr) {
+
+	}
+
 
 }
