@@ -204,6 +204,12 @@ void LinkedList::Scheduling(int num) {
 }
 
 void LinkedList::LOG() {
+	Node* curr = head;
+
+	while (curr != nullptr) {
+
+	}
+
 
 }
 
