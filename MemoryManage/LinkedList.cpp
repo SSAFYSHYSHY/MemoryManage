@@ -217,8 +217,6 @@ void LinkedList::Clear() {
 	Node* curr = head;
 
 	while (curr != nullptr) {
-
+		delete curr;
 	}
-
-
 }
