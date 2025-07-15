@@ -162,6 +162,8 @@ void LinkedList::Scheduling(int num) {
 	}
 	//MFQ
 	else if (num == 3) {
+		LinkedList newNode;
+
 		std::cout << "MFQ 형식으로 진행합니다.\n" << "FeedBack을 통해 우선순위가 자동으로 조정됩니다.\n";
 
 		while (curr != nullptr) {
