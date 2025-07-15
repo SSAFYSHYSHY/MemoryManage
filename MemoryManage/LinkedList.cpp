@@ -150,7 +150,8 @@ void LinkedList::Scheduling(int num) {
 	else if (num == 2) {
 		//새로운 링크드리스트를 만들고 정렬 값을 복사한다. 다음 node에 옮긴다.
 		LinkedList newNode;
-		
+
+
 		std::cout << "SRT 형식으로 진행합니다.\n" << "가장 짧은 메모리를 가진 프로그램이 우선적으로 보여집니다.\n";
 	
 
@@ -158,6 +159,8 @@ void LinkedList::Scheduling(int num) {
 
 
 		}
+
+		
 
 	}
 	//MFQ
