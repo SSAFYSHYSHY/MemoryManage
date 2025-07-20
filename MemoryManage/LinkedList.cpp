@@ -130,14 +130,7 @@ void LinkedList::Print() {
 }
 // 1.Round Robin, 2.SRT 스케줄링, 3.MFQ 스케줄링 4.FIFO, 5.우선순위, 6.SJF, 7.HRN";
 void LinkedList::Scheduling(int num) {
-	
-	//복사 처리.
-	LinkedList temp;
 	Node* curr = head;
-
-	while (curr != nullptr) {
-		temp
-	}
 
 	//Round Robin
 	if (num == 1) {

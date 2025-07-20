@@ -139,7 +139,11 @@ int main() {
 			int num;
 			cin >> num;
 
-			memoryList.Scheduling(num);
+			LinkedList temp;
+			temp = memoryList;
+			temp.Scheduling(num);
+
+			memoryList = temp;
 
 			cout << num << " 의 스케줄링으로 정책을 변경했습니다!\n\n";
 		}
