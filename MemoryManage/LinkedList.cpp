@@ -130,10 +130,16 @@ void LinkedList::Print() {
 }
 // 1.Round Robin, 2.SRT 스케줄링, 3.MFQ 스케줄링 4.FIFO, 5.우선순위, 6.SJF, 7.HRN";
 void LinkedList::Scheduling(int num) {
-	//Round Robin
+	
+	//복사 처리.
+	LinkedList temp;
 	Node* curr = head;
-	int cnt = 1;
 
+	while (curr != nullptr) {
+		temp
+	}
+
+	//Round Robin
 	if (num == 1) {
 		std::cout << "Round Robin 형식으로 진행합니다.\n" << "순회하기 위해 시간 별로 처리하는 메모리 양을 입력해주세요.\n";
 		int ctime;
@@ -170,6 +176,7 @@ void LinkedList::Scheduling(int num) {
 		std::cout << "MFQ 형식으로 진행합니다.\n" << "FeedBack을 통해 우선순위가 자동으로 조정됩니다.\n";
 
 		while (curr != nullptr) {
+
 
 		}
 	}
