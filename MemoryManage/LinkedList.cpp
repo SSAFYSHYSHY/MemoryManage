@@ -135,8 +135,8 @@ void LinkedList::Scheduling(int num) {
 	//Round Robin
 	if (num == 1) {
 		std::cout << "Round Robin 형식으로 진행합니다.\n" << "순회하기 위해 시간 별로 처리하는 메모리 양을 입력해주세요.\n";
-		int ctime;
-		std::cin >> ctime;
+		int memory_limit_time;
+		std::cin >> memory_limit_time;
 
 		while (curr != nullptr) {
 
