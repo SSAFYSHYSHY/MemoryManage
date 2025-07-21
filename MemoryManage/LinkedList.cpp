@@ -140,6 +140,8 @@ void LinkedList::Scheduling(int num) {
 
 		while (curr != nullptr) {
 
+
+
 		}
 
 
