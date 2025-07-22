@@ -3,6 +3,7 @@
 #include "Linked_list.h"
 #include <algorithm>
 #include <iostream>
+#include <queue>
 
 LinkedList::LinkedList() : head(nullptr), tail(nullptr) {}
 LinkedList::~LinkedList() {
@@ -134,21 +135,37 @@ void LinkedList::Scheduling(int num) {
 
 	//Round Robin
 	if (num == 1) {
+		
 		std::cout << "Round Robin 형식으로 진행합니다.\n" << "순회하기 위해 시간 별로 처리하는 메모리 양을 입력해주세요.\n";
 		int memory_limit_time;
 		std::cin >> memory_limit_time;
 
-		//가장 작은 양을 저장할 순위.
-		Node* smallest;
 
+		//q 를 선언하고 관리.
+		std::queue<Node*> q;
 		while (curr != nullptr) {
-
-
-
-
+			q.push(curr);
+			curr = curr->next;
 		}
 
+		std::cout << "Round Robin형식으로 진행합니다.(실제 LinkedList 데이터에는 영향을 끼치지 않습니다.)\n";
 
+		while (!q.empty()) {
+			Node* first = q.front();
+			q.pop();
+
+			std::cout << first->name << " 프로그램 들어옴. 잔여 메모리 : " << first->data << " , ";
+
+			if (first->data > memory_limit_time) {
+				first->data -= memory_limit_time;
+				q.push(first);
+			}
+			else {
+				std::cout << " 시간 처리한 후의 잔여 메모리 : " << first->data << "\n";
+			}
+		}
+
+		std::cout << "Round Robin형식 종료.\n";
 
 	}
 	//SRT 
