@@ -138,7 +138,11 @@ void LinkedList::Scheduling(int num) {
 		int memory_limit_time;
 		std::cin >> memory_limit_time;
 
+		//가장 작은 양을 저장할 순위.
+		Node* smallest;
+
 		while (curr != nullptr) {
+
 
 
 
