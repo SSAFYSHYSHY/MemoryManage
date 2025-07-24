@@ -222,9 +222,8 @@ void LinkedList::Scheduling(int num) {
 	else if (num == 5) {
 		std::cout << "우선순위 형식으로 진행됩니다.\n" << "현재 실행중인 프로그램(헤더)와 비교해서 다음 우선순위(메모리)가 높은 프로그램이 작동됩니다..\n";
 
-		while (curr != nullptr) {
+		Node* curr = head;
 
-		}
 
 	}
 	//SJF
@@ -232,6 +231,7 @@ void LinkedList::Scheduling(int num) {
 		std::cout << "SJF 형식으로 진행됩니다.\n" << "가장 짧은 작업량을 가진 프로그램이 먼저 실행됩니다.\n";
 
 		while (curr != nullptr) {
+
 
 		}
 
@@ -254,6 +254,7 @@ void LinkedList::LOG() {
 
 	while (curr != nullptr) {
 
+
 	}
 
 
@@ -262,7 +263,7 @@ void LinkedList::LOG() {
 void LinkedList::Clear() {
 	Node* curr = head;
 
-	while (curr != nullptr) {
+	do {
 		delete curr;
-	}
+	} while (curr != nullptr);
 }
