@@ -140,7 +140,6 @@ void LinkedList::Scheduling(int num) {
 		int memory_limit_time;
 		std::cin >> memory_limit_time;
 
-
 		//q 를 선언하고 관리.
 		std::queue<Node*> q;
 		while (curr != nullptr) {
@@ -168,21 +167,30 @@ void LinkedList::Scheduling(int num) {
 		std::cout << "Round Robin형식 종료.\n";
 
 	}
+
 	//SRT 
 	else if (num == 2) {
-		//새로운 링크드리스트를 만들고 정렬 값을 복사한다. 다음 node에 옮긴다.
-		LinkedList newNode;
-
-
 		std::cout << "SRT 형식으로 진행합니다.\n" << "가장 짧은 메모리를 가진 프로그램이 우선적으로 보여집니다.\n";
-	
-
-		while (curr != nullptr) {
-
-
-		}
-
 		
+		
+		bool flag = true;
+		do {
+			flag = false;
+			Node* curr = head;
+
+			while (curr->data > curr->next->data) {
+				std::swap(curr->data, curr->next->data);
+				std::swap(curr->name, curr->next->name);
+				flag = true;
+			}
+
+			curr = curr->next;
+		} while (curr != nullptr);
+
+		while (curr!=nullptr) {
+			std::cout << curr->name << " 프로그램 들어옴. 처리 메모리 : " << curr->data << "\n";
+			curr = curr->next;
+		}
 
 	}
 	//MFQ
@@ -194,15 +202,20 @@ void LinkedList::Scheduling(int num) {
 		while (curr != nullptr) {
 
 
+
 		}
 	}
 	//FIFO
 	else if (num == 4) {
 		std::cout << "FIFO 형식으로 진행됩니다.\n" << "가장 먼저 들어온 프로그램 부터 작동됩니다.\n";
 
-		while (curr != nullptr) {
+		do {
+			Node* curr = head;
 
-		}
+			std::cout << curr->name << " 프로그램 들어옴, 처리 메모리 : " << curr->data << "\n";
+			curr = curr->next;
+
+		} while (curr != nullptr);
 
 	}
 	//우선순위
