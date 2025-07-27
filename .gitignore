@@ -362,3 +362,5 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /MemoryManage/main.cpp
+/MemoryManage/MemoryManage.vcxproj.filters
+/MemoryManage/MemoryManage.vcxproj
