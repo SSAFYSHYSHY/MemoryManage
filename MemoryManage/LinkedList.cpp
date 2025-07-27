@@ -167,7 +167,6 @@ void LinkedList::Scheduling(int num) {
 		std::cout << "Round Robin형식 종료.\n";
 
 	}
-
 	//SRT 
 	else if (num == 2) {
 		std::cout << "SRT 형식으로 진행합니다.\n" << "가장 짧은 메모리를 가진 프로그램이 우선적으로 보여집니다.\n";
@@ -195,49 +194,43 @@ void LinkedList::Scheduling(int num) {
 	}
 	//MFQ
 	else if (num == 3) {
-		struct qNode {
-			std::string name;
-			int total_memory;
-			int remain_memory;
-			qNode* next;
-
-			qNode(std::string name, int memory) : name(name), total_memory(memory), remain_memory(memory), next(nullptr) {}
-		};
-
 		std::cout << "MFQ 형식으로 진행합니다.\n" << "FeedBack을 통해 우선순위가 자동으로 조정됩니다.\n";
 		std::cout << "메모리를 관리할 총 4개의 Queue가 배정됩니다. 1024의 메모리 까지를 고려합니다.\n";
 		std::cout << "Queue 1 : 256, Queue 2 : 512, Queue 3 : 768 , Queue 4 : FIFO 순으로 처리합니다.\n";
 
-		std::queue<qNode*> queue[4];
+		std::queue<Node*> queue[4];
+		queue[0].push(curr);
 		int memory_feedback[] = { 256, 512, 768, -1 };
 
-		while (1) {
-			bool flag = false;
+		do {
+			queue[0].push(curr);
+			curr = curr->next;
+		} while (curr != nullptr);
 
+		while (1) {
 			for (int i = 0; i < 4; i++) {
 				if (queue[i].empty()) {
-					flag = true;
 
-					qNode* cur = queue[i].front();
+					Node* curr = queue[i].front();
 					queue[i].pop();
 
-					int& remain = cur->remain_memory;
+					int& mem = curr->data;
 					int qtime = memory_feedback[i];
 
 					//프로세스 완료.
-					if (qtime == -1 || remain <= qtime) {
-						std::cout << cur->name << " 프로그램 들어옴. 처리 메모리 : " << remain << "\n";
+					if (qtime == -1 || mem <= qtime) {
+						std::cout << curr->name << " 프로그램 들어옴. 처리 메모리 : " << mem << "\n";
 					}
 					//미완료시.
 					else {
-						std::cout << cur->name << " 프로그램 부분실행. Queue(" << i << ", 처리량 : " << qtime << "\n";
-						remain -= qtime;
+						std::cout << curr->name << " 프로그램 부분실행. Queue(" << i << ", 처리량 : " << qtime << "\n";
+						mem -= qtime;
 
 						if (i + 1 < 4) {
-							queue[i + 1].push(cur);
+							queue[i + 1].push(curr);
 						}
 						else {
-							queue[i].push(cur);
+							queue[i].push(curr);
 						}
 					}
 
@@ -296,7 +289,6 @@ void LinkedList::Scheduling(int num) {
 		}
 
 	}
-
 }
 
 void LinkedList::LOG() {
