@@ -218,8 +218,32 @@ void LinkedList::Scheduling(int num) {
 				if (queue[i].empty()) {
 					flag = true;
 
+					qNode* cur = queue[i].front();
+					queue[i].pop();
 
+					int& remain = cur->remain_memory;
+					int qtime = memory_feedback[i];
+
+					//프로세스 완료.
+					if (qtime == -1 || remain <= qtime) {
+						std::cout << cur->name << " 프로그램 들어옴. 처리 메모리 : " << remain << "\n";
+					}
+					//미완료시.
+					else {
+						std::cout << cur->name << " 프로그램 부분실행. Queue(" << i << ", 처리량 : " << qtime << "\n";
+						remain -= qtime;
+
+						if (i + 1 < 4) {
+							queue[i + 1].push(cur);
+						}
+						else {
+							queue[i].push(cur);
+						}
+					}
+
+					break;
 				}
+
 			}
 		}
 	}
