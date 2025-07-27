@@ -195,14 +195,32 @@ void LinkedList::Scheduling(int num) {
 	}
 	//MFQ
 	else if (num == 3) {
-		LinkedList newNode;
+		struct qNode {
+			std::string name;
+			int total_memory;
+			int remain_memory;
+			qNode* next;
+
+			qNode(std::string name, int memory) : name(name), total_memory(memory), remain_memory(memory), next(nullptr) {}
+		};
 
 		std::cout << "MFQ 형식으로 진행합니다.\n" << "FeedBack을 통해 우선순위가 자동으로 조정됩니다.\n";
+		std::cout << "메모리를 관리할 총 4개의 Queue가 배정됩니다. 1024의 메모리 까지를 고려합니다.\n";
+		std::cout << "Queue 1 : 256, Queue 2 : 512, Queue 3 : 768 , Queue 4 : FIFO 순으로 처리합니다.\n";
 
-		while (curr != nullptr) {
+		std::queue<qNode*> queue[4];
+		int memory_feedback[] = { 256, 512, 768, -1 };
+
+		while (1) {
+			bool flag = false;
+
+			for (int i = 0; i < 4; i++) {
+				if (queue[i].empty()) {
+					flag = true;
 
 
-
+				}
+			}
 		}
 	}
 	//FIFO
