@@ -349,14 +349,51 @@ void LinkedList::Scheduling(int num) {
 			int wait;
 		};
 
+		int time = 0;
 		std::vector<qNode> v;
 		Node* curr = head;
 
 		//평균 계산 벡터에 누적.
 		while (curr != nullptr) {
-
+			v.push_back({ curr->name , curr->data , time});
+			time += 10;
+			curr = curr->next;
 		}
 
+		int now = 0 , finish = 0;
+		std::vector<bool> visited(v.size(), false);
+		
+		while (finish < v.size()) {
+			int shortest = -1;
+			double maxi = -1.0;
+
+			//가장 긴 작업 선택.
+			for (int i = 0; i < v.size(); i++) {
+				if (visited[i] || v[i].wait > maxi) continue;
+
+				int wait_time = now - v[i].memory;
+				double rr = (double)(wait_time + v[i].memory / v[i].memory);
+
+				if (rr > maxi) {
+					maxi = rr;
+					shortest = i;
+				}
+			}
+
+			//도착 프로그램 없으면 시간 증가. 
+			if (shortest == -1) {
+				now++;
+				continue;
+			}
+
+			int real_wait = now - v[shortest].wait;
+			int mean_time = real_wait + v[shortest].memory;
+
+			std::cout << "프로그램 : " << v[shortest].name << " 의 대기시간은 : " << real_wait << " 를 가지고 있고, 반환시간은 " << mean_time << " 를 가지고 있습니다.\n";
+			now += v[shortest].memory;
+			visited[shortest] = true;
+			finish++;
+		}
 	}
 }
 
