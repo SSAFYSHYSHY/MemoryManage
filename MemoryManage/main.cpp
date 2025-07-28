@@ -40,31 +40,6 @@ int System_input() {
 	return num;
 }
 
-//아직 미구현.
-void System_DeadLock() {
-	
-}
-
-//아직 미구현.
-pair<int, string > System_Find_Hack() {
-	return make_pair(0,"null");
-}
-
-void System_Alert() {
-	cout << "[경고] 외부 패킷의 접근 시도.\n";
-	cout << "\a";
-	cout << "[경고] 외부 패킷의 접근 시도.\n";
-	cout << "\a";
-	cout << "[경고] 외부 패킷의 접근 시도.\n";
-	cout << "\a";
-
-	cout << "해당 외부 패킷이 가고자 하는 곳을 탐색합니다.\n";
-	//접근되고 있는 프로그램 탐색.
-	pair<int, string> look = System_Find_Hack();
-	cout << "색출 성공! 해당 프로그램의 인덱스와 이름값을 호출합니다.\n";
-
-}
-
 int main() {
 	LinkedList memoryList;
 
@@ -167,9 +142,4 @@ int main() {
 			break;
 		}
 	}
-
-	//시스템 데드락.
-	System_DeadLock();
-	//시스템 외부 해킹 경고.
-	System_Alert();
 }

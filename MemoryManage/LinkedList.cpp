@@ -4,6 +4,8 @@
 #include <algorithm>
 #include <iostream>
 #include <queue>
+#include <vector>
+#include <climits>
 
 LinkedList::LinkedList() : head(nullptr), tail(nullptr) {}
 LinkedList::~LinkedList() {
@@ -280,18 +282,77 @@ void LinkedList::Scheduling(int num) {
 	//SJF
 	else if (num == 6) {
 		std::cout << "SJF 형식으로 진행됩니다.\n" << "가장 짧은 작업량을 가진 프로그램이 먼저 실행됩니다.\n";
+		std::cout << "도착 시간을 입력하면 해당 입력이 SJF의 도착 시간으로 정해집니다.\n";
+		std::cout << "가장 첫 프로그램은 자동으로 도착 시간 0 으로 설정됩니다.\n";
 
+		int arrive_time;
+		std::cin >> arrive_time;
+
+		struct qNode {
+			std::string name;
+			int arrive;
+			int memory;
+		};
+
+		std::vector<qNode> v;
+		Node* curr = head;
+
+		int time = 0, idx = 0;
+
+		//도착 시간 포함한 벡터.
 		while (curr != nullptr) {
+			v.push_back({ curr->name, (idx == 0 ? 0 : arrive_time * idx), curr->data });
+			curr = curr->next;
+			idx++;
+		}
 
+		int curr_time = 0, finish = 0;
+		std::vector<bool> visited(v.size(), false);
 
+		while (finish < v.size()) {
+			int shortest = -1;
+			int mini = INT_MAX;
+
+			//가장 짧은 작업 선택.
+			for (int i = 0; i < v.size(); i++) {
+				if (!visited[i] && v[i].arrive <= curr_time && v[i].memory < mini) {
+					mini = v[i].memory;
+					shortest = i;
+				}
+			}
+
+			//도착 없으면 시간 증가.
+			if (shortest == -1) {
+				curr_time++;
+				continue;
+			}
+
+			//대기시간, 실행시간.
+			int wait = curr_time - v[shortest].arrive;
+			int work = wait + v[shortest].memory;
+
+			std::cout << "프로그램 : " << v[shortest].name << " 의 대기시간은 : " << wait << ", 실행시간은 : " << work << " 입니다.\n";
+			curr_time += v[shortest].memory;
+			visited[shortest] = true;
+			finish++;
 		}
 
 	}
 	//HRN
 	else if (num == 7) {
-		std::cout << "SJF 형식으로 진행됩니다.\n" << "프로그램 응답순위가 커질 수록 우선순위 실행 속도가 높아집니다.\n";
-		std::cout << "해당 테스트 프로젝트에서는 응답시간은 +10 초씩 증가한다 가정합니다.\n";
+		std::cout << "HRN 형식으로 진행됩니다.\n" << "프로그램 응답순위가 커질 수록 우선순위 실행 속도가 높아집니다.\n";
+		std::cout << "해당 시뮬레이션 에서의 대기시간은 +10 초씩 증가한다 가정합니다.\n";
 
+		struct qNode {
+			std::string name;
+			int memory;
+			int wait;
+		};
+
+		std::vector<qNode> v;
+		Node* curr = head;
+
+		//평균 계산 벡터에 누적.
 		while (curr != nullptr) {
 
 		}
@@ -313,7 +374,5 @@ void LinkedList::LOG() {
 void LinkedList::Clear() {
 	Node* curr = head;
 
-	do {
-		delete curr;
-	} while (curr != nullptr);
+	delete curr;
 }
