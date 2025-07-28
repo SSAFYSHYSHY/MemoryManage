@@ -3,10 +3,13 @@
 #include <thread>
 #include <chrono>
 #include <ctime>
+#include <vector>
 
 #include "Linked_list.h"
 
 using namespace std;
+
+vector<int> v;
 
 void System_Start() {
 	cout << "----------------------------------\n";
@@ -36,6 +39,8 @@ int System_input() {
 	cout << "9. 종료.\n";
 	cout << "\n\n";
 	cin >> num;
+
+	v.push_back(num);
 
 	return num;
 }
@@ -127,7 +132,32 @@ int main() {
 		else if (ord == 7) {
 			cout << "지금까지 수행한 모든 명령어를 출력합니다.\n\n";
 
-			memoryList.LOG();
+			for (int i = 0; i < v.size(); i++) {
+				if (v[i] == 1) {
+					cout << i + 1 << "번 , 프로그램 입력 \n";
+				}
+				else if (v[i] == 2) {
+					cout << i + 1 << "번 , 프로그램 삭제 \n";
+				}
+				else if (v[i] == 3) {
+					cout << i + 1 << "번 , 점유율이 높은 프로그램 우선순위. \n";
+				}
+				else if (v[i] == 4) {
+					cout << i + 1 << "번 , 점유율이 낮은 프로그램 우선순위. \n";
+				}
+				else if (v[i] == 5) {
+					cout << i + 1 << "번 , 메모리 상태 확인. \n";
+				}
+				else if (v[i] == 6) {
+					cout << i + 1 << "번 , 스케쥴링 정책 시뮬. \n";
+				}
+				else if (v[i] == 7) {
+					cout << i + 1 << "번 , 로그 확인. \n";
+				}
+				else if (v[i] == 8) {
+					cout << i + 1 << "번 , 전체 초기화. \n";
+				}
+			}
 		}
 
 		//8. 전체 초기화.
