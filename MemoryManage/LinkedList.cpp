@@ -351,12 +351,12 @@ void LinkedList::Scheduling(int num) {
 	//HRN
 	else if (num == 7) {
 		std::cout << "HRN 형식으로 진행됩니다.\n" << "프로그램 응답순위가 커질 수록 우선순위 실행 속도가 높아집니다.\n";
-		std::cout << "해당 시뮬레이션 에서의 대기시간은 +10 초씩 증가한다 가정합니다.\n";
+		std::cout << "해당 시뮬레이션 에서의 대기시간은 +10 초씩 증가한다 가정합니다.\n\n";
 
 		struct qNode {
 			std::string name;
 			int memory;
-			int wait;
+			int arrival;
 		};
 
 		int time = 0;
@@ -372,17 +372,18 @@ void LinkedList::Scheduling(int num) {
 
 		int now = 0 , finish = 0;
 		std::vector<bool> visited(v.size(), false);
-		
+
 		while (finish < v.size()) {
 			int shortest = -1;
 			double maxi = -1.0;
 
 			//가장 긴 작업 선택.
 			for (int i = 0; i < v.size(); i++) {
-				if (visited[i] || v[i].wait > maxi) continue;
+				if (visited[i]) continue;
+				if (v[i].arrival > now) continue;
 
-				int wait_time = now - v[i].memory;
-				double rr = (double)(wait_time + v[i].memory / v[i].memory);
+				int wait_time = now - v[i].arrival;
+				double rr = (double)((wait_time + v[i].memory) / v[i].memory);
 
 				if (rr > maxi) {
 					maxi = rr;
@@ -396,7 +397,7 @@ void LinkedList::Scheduling(int num) {
 				continue;
 			}
 
-			int real_wait = now - v[shortest].wait;
+			int real_wait = now - v[shortest].arrival;
 			int mean_time = real_wait + v[shortest].memory;
 
 			std::cout << "프로그램 : " << v[shortest].name << " 의 대기시간은 : " << real_wait << " 를 가지고 있고, 반환시간은 " << mean_time << " 를 가지고 있습니다.\n";
