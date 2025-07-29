@@ -198,7 +198,7 @@ void LinkedList::Scheduling(int num) {
 
 		std::cout << "MFQ 형식으로 진행합니다.\n" << "FeedBack을 통해 우선순위가 자동으로 조정됩니다.\n";
 		std::cout << "메모리를 관리할 총 4개의 Queue가 배정됩니다. 1024의 메모리 까지를 고려합니다.\n";
-		std::cout << "Queue 1 : 256, Queue 2 : 512, Queue 3 : 768 , Queue 4 : FIFO 순으로 처리합니다.\n";
+		std::cout << "Queue 1 : 256, Queue 2 : 512, Queue 3 : 768 , Queue 4 : FIFO 순으로 처리합니다.\n\n";
 
 		std::queue<Node*> queue[4];
 		queue[0].push(curr);
@@ -210,6 +210,8 @@ void LinkedList::Scheduling(int num) {
 		} while (curr != nullptr);
 
 		while (1) {
+			bool flag = false;
+
 			for (int i = 0; i < 4; i++) {
 				if (!queue[i].empty()) {
 
@@ -236,10 +238,13 @@ void LinkedList::Scheduling(int num) {
 						}
 					}
 
+					flag = true;
 					break;
 				}
 
 			}
+
+			if (!flag) break;
 		}
 	}
 	//FIFO
@@ -248,13 +253,12 @@ void LinkedList::Scheduling(int num) {
 
 		std::cout << "FIFO 형식으로 진행됩니다.\n" << "가장 먼저 들어온 프로그램 부터 작동됩니다.\n";
 
-		do {
-			Node* curr = head;
+		while(curr != nullptr){
 
 			std::cout << curr->name << " 프로그램 들어옴, 처리 메모리 : " << curr->data << "\n";
 			curr = curr->next;
 
-		} while (curr != nullptr);
+		};
 
 	}
 	//우선순위
