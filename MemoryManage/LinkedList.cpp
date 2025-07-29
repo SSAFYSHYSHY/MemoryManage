@@ -273,14 +273,16 @@ void LinkedList::Scheduling(int num) {
 			flag = false;
 			Node* curr = head;
 
-			while (curr->data > curr->next->data) {
-				std::swap(curr->data, curr->next->data);
-				std::swap(curr->name, curr->next->name);
-				flag = true;
-			}
+			while (curr->next != nullptr) {
+				if (curr->data < curr->next->data) {
+					std::swap(curr->data, curr->next->data);
+					std::swap(curr->name, curr->next->name);
+					flag = true;
+				}
 
-			curr = curr->next;
-		} while (curr != nullptr);
+				curr = curr->next;
+			}
+		} while (flag);
 
 		while (curr != nullptr) {
 			std::cout << curr->name << " 프로그램이 실행됩니다. 처리 메모리 : " << curr->data << "\n";
