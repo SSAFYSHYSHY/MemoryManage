@@ -20,6 +20,28 @@ public:
 	LinkedList();
 	~LinkedList();
 
+	LinkedList(const LinkedList& other) {
+		head = nullptr;
+		Node* curr = other.head;
+
+		while (curr != nullptr) {
+			Insert(curr->name, curr->data);
+			curr = curr->next;
+		}
+	}
+
+	LinkedList copy() const {
+		LinkedList newList;
+		Node* curr = head;
+
+		while (curr != nullptr) {
+			newList.Insert(curr->name, curr->data);
+			curr = curr->next;
+		}
+
+		return newList;
+	}
+
 	void Insert(std::string name, int data);
 	bool Delete(std::string name);
 	void Upper();

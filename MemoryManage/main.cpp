@@ -117,13 +117,8 @@ int main() {
 			int num;
 			cin >> num;
 
-			LinkedList temp;
-			temp = memoryList;
+			LinkedList temp = memoryList.copy();
 			temp.Scheduling(num);
-
-			memoryList = temp;
-
-			cout << num << " 의 스케줄링으로 정책을 변경했습니다!\n\n";
 		}
 
 		//7. 시스템 로그 확인.
