@@ -411,5 +411,11 @@ void LinkedList::Scheduling(int num) {
 void LinkedList::Clear() {
 	Node* curr = head;
 
-	delete curr;
+	while (curr != nullptr) {
+		Node* next = curr->next;
+		delete curr;
+		curr = next;
+	}
+
+	head = nullptr;
 }
