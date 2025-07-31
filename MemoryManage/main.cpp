@@ -4,6 +4,7 @@
 #include <chrono>
 #include <ctime>
 #include <vector>
+#include <cstdlib>
 
 #include "Linked_list.h"
 
@@ -43,12 +44,38 @@ int System_input() {
 	return num;
 }
 
+void moveCursor(int row, int col) {
+	std::cout << "\033[" << row << ";" << col << "H";
+}
+
+void Test_Output() {
+	int arr[] = { 1,2,3,4 };
+
+	int iterations = 10;
+	std::srand(static_cast<unsigned>(std::time(nullptr)));
+
+	for (int i = 0; i < 20; i++) {
+		for (int& val : arr) {
+			val += (std::rand() % 3 - 1);
+		}
+
+		moveCursor(3,5);
+
+		cout << "a=" << arr[0] << " , b=" << arr[1] << " , c=" << arr[2] << " , d=" << arr[3];
+
+		std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+	}
+
+}
+
 int main() {
 	LinkedList memoryList;
 
 	System_Start();
 	srand(time(NULL));
-	
+	Test_Output();
+
+
 	while (1) {
 		cout << "\n\n";
 		int ord = System_input();
