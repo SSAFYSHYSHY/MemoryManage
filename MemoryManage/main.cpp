@@ -44,27 +44,127 @@ int System_input() {
 	return num;
 }
 
-void moveCursor(int row, int col) {
-	std::cout << "\033[" << row << ";" << col << "H";
-}
+void Calc() {
+	cout << "\n\n";
 
-void Test_Output() {
-	int arr[] = { 1,2,3,4 };
+	int ord;
 
-	int iterations = 10;
-	std::srand(static_cast<unsigned>(std::time(nullptr)));
+	ord = System_input();
 
-	for (int i = 0; i < 20; i++) {
-		for (int& val : arr) {
-			val += (std::rand() % 3 - 1);
+	if (ord == 9) exit;
+
+	LinkedList memoryList;
+
+	//1. 프로그램 입력.
+	if (ord == 1) {
+		cout << "입력하고자 하는 프로그램의 이름을 입력해주십시오.\n";
+
+		string s;
+		cin >> s;
+
+		int new_data = rand() % 100 + 1;
+		memoryList.Insert(s, new_data);
+
+		cout << "프로그램 " << s << " 가 " << new_data << " (MB)만큼 추가됨.\n";
+	}
+	//2. 프로그램 삭제.
+	else if (ord == 2) {
+		cout << "삭제하고자 하는 프로그램의 이름을 입력해주십시오.\n";
+
+		string s;
+		cin >> s;
+
+		if (memoryList.Delete(s)) {
+			cout << "프로그램 " << s << " 가 " << "삭제됨.\n";
+		}
+		else {
+			cout << "프로그램 " << s << " 가 없습니다.\n";
 		}
 
-		moveCursor(3,5);
-
-		cout << "a=" << arr[0] << " , b=" << arr[1] << " , c=" << arr[2] << " , d=" << arr[3];
-
-		std::this_thread::sleep_for(std::chrono::milliseconds(2000));
 	}
+	//3. 오름차순 정렬.
+	else if (ord == 3) {
+		cout << "메모리에 저장된 프로그램들을 오름차순으로 출력합니다.\n\n";
+
+		memoryList.Upper();
+	}
+
+	//4. 내림차순 정렬.
+	else if (ord == 4) {
+		cout << "메모리에 저장된 프로그램들을 내림차순으로 출력합니다.\n\n";
+
+		memoryList.Down();
+	}
+
+	//5. 메모리 상태 출력.
+	else if (ord == 5) {
+		cout << "메모리 상태를 출력합니다.\n\n";
+
+		memoryList.Print();
+	}
+
+	//6. 스케쥴링 정책 변경.
+	else if (ord == 6) {
+		cout << "스케줄링 정책을 시뮬레이션 합니다.\n\n";
+		cout << "선점형 정책은 다음과 같습니다.\n";
+		cout << "1.Round Robin, 2.SRT 스케줄링, 3.MFQ 스케줄링\n\n";
+		cout << "비선점형 정책은 다음과 같습니다.\n";
+		cout << "4.FIFO, 5.우선순위, 6.SJF, 7.HRN\n\n";
+
+		cout << "시뮬레이션 하고자 하는 스케줄링을 입력해주세요.\n\n";
+		int num;
+		cin >> num;
+
+		LinkedList temp = memoryList.copy();
+		temp.Scheduling(num);
+	}
+
+	//7. 시스템 로그 확인.
+	else if (ord == 7) {
+		cout << "지금까지 수행한 모든 명령어를 출력합니다.\n\n";
+
+		for (int i = 0; i < v.size(); i++) {
+			if (v[i] == 1) {
+				cout << i + 1 << "번 , 프로그램 입력 \n";
+			}
+			else if (v[i] == 2) {
+				cout << i + 1 << "번 , 프로그램 삭제 \n";
+			}
+			else if (v[i] == 3) {
+				cout << i + 1 << "번 , 점유율이 높은 프로그램 우선순위. \n";
+			}
+			else if (v[i] == 4) {
+				cout << i + 1 << "번 , 점유율이 낮은 프로그램 우선순위. \n";
+			}
+			else if (v[i] == 5) {
+				cout << i + 1 << "번 , 메모리 상태 확인. \n";
+			}
+			else if (v[i] == 6) {
+				cout << i + 1 << "번 , 스케쥴링 정책 시뮬. \n";
+			}
+			else if (v[i] == 7) {
+				cout << i + 1 << "번 , 로그 확인. \n";
+			}
+			else if (v[i] == 8) {
+				cout << i + 1 << "번 , 전체 초기화. \n";
+			}
+		}
+	}
+
+	//8. 전체 초기화.
+	else if (ord == 8) {
+		cout << "전체 초기화를 수행합니다.\n\n";
+
+		memoryList.Clear();
+	}
+
+	else if (ord == 9) {
+		cout << "시스템을 종료합니다.\n\n";
+	}
+
+}
+
+void Output(int num) {
 
 }
 
@@ -73,123 +173,17 @@ int main() {
 
 	System_Start();
 	srand(time(NULL));
-	Test_Output();
 
+	int second = 0;
 
 	while (1) {
-		cout << "\n\n";
-		int ord = System_input();
+		//링크드 리스트 메모리 관리 연산 핵심 함수.
+		Calc();
 
-		if (ord == 9) {
-			break;
-		}
+		//출력. 계속 정보 갱신.
+		Output(second);
+		second++;
 
-		//1. 프로그램 입력.
-		if (ord == 1) {
-			cout << "입력하고자 하는 프로그램의 이름을 입력해주십시오.\n";
-
-			string s;
-			cin >> s;
-
-			int new_data = rand() % 100 + 1;
-			memoryList.Insert(s, new_data);
-
-			cout << "프로그램 " << s << " 가 " << new_data << " (MB)만큼 추가됨.\n";
-		}
-		//2. 프로그램 삭제.
-		else if (ord == 2) {
-			cout << "삭제하고자 하는 프로그램의 이름을 입력해주십시오.\n";
-
-			string s;
-			cin >> s;
-
-			if (memoryList.Delete(s)) {
-				cout << "프로그램 " << s << " 가 " << "삭제됨.\n";
-			}
-			else {
-				cout << "프로그램 " << s << " 가 없습니다.\n";
-			}
-
-		}
-		//3. 오름차순 정렬.
-		else if (ord == 3) {
-			cout << "메모리에 저장된 프로그램들을 오름차순으로 출력합니다.\n\n";
-
-			memoryList.Upper();
-		}
-
-		//4. 내림차순 정렬.
-		else if (ord == 4) {
-			cout << "메모리에 저장된 프로그램들을 내림차순으로 출력합니다.\n\n";
-
-			memoryList.Down();
-		}
-
-		//5. 메모리 상태 출력.
-		else if (ord == 5) {
-			cout << "메모리 상태를 출력합니다.\n\n";
-
-			memoryList.Print();
-		}
-
-		//6. 스케쥴링 정책 변경.
-		else if (ord == 6) {
-			cout << "스케줄링 정책을 시뮬레이션 합니다.\n\n";
-			cout << "선점형 정책은 다음과 같습니다.\n";
-			cout << "1.Round Robin, 2.SRT 스케줄링, 3.MFQ 스케줄링\n\n";
-			cout << "비선점형 정책은 다음과 같습니다.\n";
-			cout << "4.FIFO, 5.우선순위, 6.SJF, 7.HRN\n\n";
-
-			cout << "시뮬레이션 하고자 하는 스케줄링을 입력해주세요.\n\n";
-			int num;
-			cin >> num;
-
-			LinkedList temp = memoryList.copy();
-			temp.Scheduling(num);
-		}
-
-		//7. 시스템 로그 확인.
-		else if (ord == 7) {
-			cout << "지금까지 수행한 모든 명령어를 출력합니다.\n\n";
-
-			for (int i = 0; i < v.size(); i++) {
-				if (v[i] == 1) {
-					cout << i + 1 << "번 , 프로그램 입력 \n";
-				}
-				else if (v[i] == 2) {
-					cout << i + 1 << "번 , 프로그램 삭제 \n";
-				}
-				else if (v[i] == 3) {
-					cout << i + 1 << "번 , 점유율이 높은 프로그램 우선순위. \n";
-				}
-				else if (v[i] == 4) {
-					cout << i + 1 << "번 , 점유율이 낮은 프로그램 우선순위. \n";
-				}
-				else if (v[i] == 5) {
-					cout << i + 1 << "번 , 메모리 상태 확인. \n";
-				}
-				else if (v[i] == 6) {
-					cout << i + 1 << "번 , 스케쥴링 정책 시뮬. \n";
-				}
-				else if (v[i] == 7) {
-					cout << i + 1 << "번 , 로그 확인. \n";
-				}
-				else if (v[i] == 8) {
-					cout << i + 1 << "번 , 전체 초기화. \n";
-				}
-			}
-		}
-
-		//8. 전체 초기화.
-		else if (ord == 8) {
-			cout << "전체 초기화를 수행합니다.\n\n";
-
-			memoryList.Clear();
-		}
-
-		else if (ord == 9) {
-			cout << "시스템을 종료합니다.\n\n";
-			break;
-		}
+		system("cls");
 	}
 }
